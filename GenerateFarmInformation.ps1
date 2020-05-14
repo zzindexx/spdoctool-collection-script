@@ -227,7 +227,7 @@ Get-SPWebApplication -IncludeCentralAdministration | % {
         url = $spWebApplication.Url
         #port = $spWebApplication.Port
         applicationPoolId = $spWebApplication.ApplicationPool.Id
-        serviceApplicationProxyGroupId = $spWebApplicationServiceApplicationProxyGroup.Id 
+        serviceApplicationProxyGroupId = $spWebApplication.ServiceApplicationProxyGroup.Id 
 
         resourceThrottlingSettings = @{
             listViewThreshold = $spWebApplication.MaxItemsPerThrottledOperation
