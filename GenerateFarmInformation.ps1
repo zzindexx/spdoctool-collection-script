@@ -106,7 +106,7 @@ $spConfig = @{}
 #servers
 Write-Host "Getting farm servers..." -NoNewLine
 $servers = @()
-$spServerNames = @(Get-SPServer | where {$_.Role -ne "Invalid" -and ($_.ServiceInstances | select -ExpandProperty TypeName) -notcontains "Microsoft SharePoint Foundation Database"} | select -ExpandProperty Address )
+$spServerNames = @(Get-SPServer | where {$_.Role -ne "Invalid"} | select -ExpandProperty Address )
 #$spServerNames += $realSqlServerNames 
 $spServerNames | select -Unique | % {
     $spServerName =$_
