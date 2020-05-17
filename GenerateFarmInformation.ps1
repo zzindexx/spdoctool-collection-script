@@ -70,7 +70,7 @@ $spSqlServers | % {
     
 
     $nodes = @()
-    if ($isHadr) {
+    if ($isHadr -eq 1) {
         $sqlCommand = "select replica_server_name from sys.availability_groups ag left join sys.availability_group_listeners agl on ag.group_id=agl.group_id left join  sys.availability_replicas ar on ar.group_id=ag.group_id where dns_name = '$sqlServerName' or dns_name = '$($sqlServerName.Split(".")[0])'"
         $commandNodes = new-object system.data.sqlclient.sqlcommand($sqlCommand, $connection)
         $reader = $commandNodes.ExecuteReader()
@@ -86,8 +86,7 @@ $spSqlServers | % {
         ipaddresses = $ipAddresses
         isAlias = $isAlias
         sqlname = $sqlServerName
-        isCluster = $isCluster -ne $null
-        isAlwayson = $isHadr -ne $null
+        isAlwayson = $isHadr -eq 1
         nodes = @($nodes)
         databses = @(
             Get-SPDatabase | select Name, @{ label='Server'; expression={(&{If($_.Server.Name -ne $null) {$_.Server.Name} Else {$_.Server}}) }} | where {$_.Server -eq $spSqlServerName} | select -ExpandProperty Name
