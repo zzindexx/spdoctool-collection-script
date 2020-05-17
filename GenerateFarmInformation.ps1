@@ -88,7 +88,7 @@ $spSqlServers | % {
         sqlname = $sqlServerName
         isAlwayson = $isHadr -eq 1
         nodes = @($nodes)
-        databses = @(
+        databases = @(
             Get-SPDatabase | select Name, @{ label='Server'; expression={(&{If($_.Server.Name -ne $null) {$_.Server.Name} Else {$_.Server}}) }} | where {$_.Server -eq $spSqlServerName} | select -ExpandProperty Name
         )
     }
