@@ -37,10 +37,11 @@ $sqlConfig = @{}
 Write-Host "Getting SQL Servers in farm..."
 $sqlServers = @()
 $realSqlServerNames = @()
-$spSqlServerNames = @(Get-SPServer | where {($_.ServiceInstances | select -ExpandProperty TypeName) -contains "Microsoft SharePoint Foundation Database"} | select -ExpandProperty Address )
+$spSqlServers = @(Get-SPServer | where {($_.ServiceInstances | select -ExpandProperty TypeName) -contains "Microsoft SharePoint Foundation Database"})
 
-$spSqlServerNames | % {
-    $spSqlServerName = $_
+$spSqlServers | % {
+    $spSqlServer = $_
+    $spSqlServerName = $_.Address
     $isAlias = $false
     $sqlServerName = $spSqlServerName
 
@@ -80,6 +81,7 @@ $spSqlServerNames | % {
     $connection.Close()
 
     $sqlServers += @{
+        id = $spSqlServer.Id
         name = $spSqlServerName
         ipaddresses = $ipAddresses
         isAlias = $isAlias
@@ -388,3 +390,4 @@ $farmConfigurationJson = @{
 }
 
 $farmConfigurationJson | ConvertTo-Json -Depth 100 | Out-File $outputFilePath
+ 
