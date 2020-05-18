@@ -311,14 +311,14 @@ Write-Host "Done"
 
 #Service application proxy groups
 Write-Host "Getting service application proxy groups.." -NoNewLine
-$serviceApplicationProxyGroups = Get-SPServiceApplicationProxyGroup | % {
+$serviceApplicationProxyGroups = @(Get-SPServiceApplicationProxyGroup | % {
     $proxyGroup = $_
     @{
         id = $proxyGroup.Id.ToString()
         name = $proxyGroup.DisplayName
         proxies = @($proxyGroup.Proxies | select @{l='id';e={$_.Id.ToString()}} | select -ExpandProperty id )
     }
-}
+})
 Write-Host "Done"
 
 
