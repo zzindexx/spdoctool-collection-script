@@ -1,0 +1,388 @@
+{
+    "sqlConfig": {
+        "servers": [
+            {
+                "sqlname": "CONTOSO-SQL-AG",
+                "id": "1d74ca8a-04a5-4c93-81af-837937b23410",
+                "nodes": [
+                    "CONTOSO-SQL-01",
+                    "CONTOSO-SQL-02"
+                ],
+                "ipaddresses": [
+                    "10.0.0.100"
+                ],
+                "isAlias": true,
+                "name": "spsql",
+                "isAlwayson": true,
+                "databases": [
+                    "SharePoint2019_Config_DB",
+                    "WSS-Content",
+                    "SharePoint2019_Sites_AdminContent_DB",
+                    "UPS_Sync_DB",
+                    "UPS_Social_DB",
+                    "UPS_Profile_DB"
+                ]
+            }
+        ]
+    },
+    "spConfig": {
+        "farmSolutions": [
+            {
+                "id": "cd5b16d4-8fcd-422a-bafd-010163ed5e2a",
+                "name": "reportviewerwebpart.wsp",
+                "deployed": true,
+                "deployedWebApplicationIds": [
+                    "b9538fcf-b429-4535-8635-29e74de0b280"
+                ],
+                "containsGlobalAssembly": true,
+                "containsWebApplicationResource": true,
+                "globallydeployed": false
+            }
+        ],
+        "servers": [
+            {
+                "ipaddresses": [
+                    "10.0.0.10"
+                ],
+                "name": "CONTOSO-SP-01",
+                "id": "31750fe6-43d2-4936-8e80-04c853a6d4fe",
+                "products": [
+                    "Language Pack for SharePoint and Project Server 2019 - Russian/русский",
+                    "Microsoft SharePoint Server 2019"
+                ]
+            },
+            {
+                "ipaddresses": [
+                    "10.0.0.11"
+                ],
+                "name": "CONTOSO-SP-02",
+                "id": "554205cd-522b-468a-be6c-cb06d01e08dc",
+                "products": [
+                    "Language Pack for SharePoint and Project Server 2019 - Russian/русский",
+                    "Microsoft SharePoint Server 2019"
+                ]
+            }
+        ],
+        "webApplicationPools": [
+            {
+                "name": "SP - App pool",
+                "id": "e8f2b529-bc2d-4587-b7b2-7d6063052dd2",
+                "accountId": "35dc2fca-3644-4b46-b04d-5907a60dcf47"
+            },
+            {
+                "name": "SharePoint Central Administration v4",
+                "id": "9310520b-d3d6-45de-94b6-863e03b71fd9",
+                "accountId": "5e1afee7-18b1-47fd-9cc2-b41714339309"
+            }
+        ],
+        "serviceInstances": [
+            {
+                "serversIds": [
+                    "31750fe6-43d2-4936-8e80-04c853a6d4fe"
+                ],
+                "name": "Microsoft SharePoint Foundation Workflow Timer Service",
+                "id": "5dba9860-821e-461f-b6ae-d9aef894e57f"
+            },
+            {
+                "serversIds": [
+                    "554205cd-522b-468a-be6c-cb06d01e08dc"
+                ],
+                "name": "Microsoft SharePoint Foundation Workflow Timer Service",
+                "id": "021d1bd9-793e-4d2c-a58c-1a54bc2f4ab6"
+            },
+            {
+                "serversIds": [
+                    "31750fe6-43d2-4936-8e80-04c853a6d4fe"
+                ],
+                "name": "Microsoft SharePoint Foundation Incoming E-Mail",
+                "id": "6535f25b-3bbf-4155-a737-66ac0abe0607"
+            },
+            {
+                "serversIds": [
+                    "554205cd-522b-468a-be6c-cb06d01e08dc"
+                ],
+                "name": "Microsoft SharePoint Foundation Incoming E-Mail",
+                "id": "eeeeb9d5-16e9-4215-b23d-3461f0bfbe69"
+            },
+            {
+                "serversIds": [
+                    "554205cd-522b-468a-be6c-cb06d01e08dc"
+                ],
+                "name": "Distributed Cache",
+                "id": "3d17e0a7-2913-4ab1-a5c4-c7b5d885fd8a"
+            },
+            {
+                "serversIds": [
+                    "554205cd-522b-468a-be6c-cb06d01e08dc"
+                ],
+                "name": "User Profile Service",
+                "id": "0421dba9-30e3-43b5-bca6-151e6c0288b8"
+            },
+            {
+                "serversIds": [
+                    "31750fe6-43d2-4936-8e80-04c853a6d4fe"
+                ],
+                "name": "Microsoft SharePoint Foundation Web Application",
+                "id": "c30ab9e1-d0a8-4c43-bafa-eb9196fa671e"
+            },
+            {
+                "serversIds": [
+                    "554205cd-522b-468a-be6c-cb06d01e08dc"
+                ],
+                "name": "Microsoft SharePoint Foundation Web Application",
+                "id": "36db6360-6193-46ff-af9d-7da17825bf8b"
+            },
+            {
+                "serversIds": [
+                    "554205cd-522b-468a-be6c-cb06d01e08dc"
+                ],
+                "name": "Claims to Windows Token Service",
+                "id": "c7496c24-6dfa-4e9d-ba81-55cd9c823fc9"
+            },
+            {
+                "serversIds": [
+                    "554205cd-522b-468a-be6c-cb06d01e08dc"
+                ],
+                "name": "Central Administration",
+                "id": "a725b8d9-5f1d-4a83-8ffe-29fcd32713b7"
+            }
+        ],
+        "webApplications": [
+            {
+                "url": "http://portal.contoso.com/",
+                "id": "b9538fcf-b429-4535-8635-29e74de0b280",
+                "resourceThrottlingSettings": {
+                    "listViewThreshold": 5000,
+                    "maxLookupColumns": 12,
+                    "listViewThresholdAdmins": 20000
+                },
+                "identityProviders": [
+                    {
+                        "zone": "Default",
+                        "allowAnonymous": false,
+                        "useWindowsIntegratedAuthentication": true,
+                        "disableKerberos": false,
+                        "authentication": "Windows Authentication",
+                        "claimProviderName": "AD"
+                    }
+                ],
+                "serviceApplicationProxyGroupId": "d565429a-4054-4cb7-a025-02c18444ee50",
+                "applicationPoolId": "e8f2b529-bc2d-4587-b7b2-7d6063052dd2",
+                "name": "SharePoint - portal.contoso.com",
+                "outgoingEmailSettings": {
+                    "replyToAddress": null,
+                    "smtpPort": 0,
+                    "senderAddress": null,
+                    "smtpServer": null
+                },
+                "policies": [
+                    {
+                        "username": "NT AUTHORITY\\LOCAL SERVICE",
+                        "rights": [
+                            "Full Read"
+                        ],
+                        "displayName": "NT AUTHORITY\\LOCAL SERVICE"
+                    }
+                ],
+                "managedPaths": [
+                    {
+                        "name": "",
+                        "type": "ExplicitInclusion"
+                    },
+                    {
+                        "name": "sites",
+                        "type": "WildcardInclusion"
+                    }
+                ],
+                "addresses": [
+                    {
+                        "publicUrl": "http://portal.contoso.com/",
+                        "zone": "Default",
+                        "incomingUrl": "http://portal.contoso.com/"
+                    }
+                ]
+            },
+            {
+                "url": "http://contoso-sp-01:2019/",
+                "id": "d9c6bd86-c84f-4e81-ad6e-9af18e00a76f",
+                "resourceThrottlingSettings": {
+                    "listViewThreshold": 5000,
+                    "maxLookupColumns": 12,
+                    "listViewThresholdAdmins": 20000
+                },
+                "identityProviders": [],
+                "serviceApplicationProxyGroupId": "d565429a-4054-4cb7-a025-02c18444ee50",
+                "applicationPoolId": "9310520b-d3d6-45de-94b6-863e03b71fd9",
+                "name": "SharePoint Central Administration v4",
+                "outgoingEmailSettings": {
+                    "replyToAddress": null,
+                    "smtpPort": 0,
+                    "senderAddress": null,
+                    "smtpServer": null
+                },
+                "policies": [
+                    {
+                        "username": "NT AUTHORITY\\LOCAL SERVICE",
+                        "rights": [
+                            "Full Read"
+                        ],
+                        "displayName": "NT AUTHORITY\\LOCAL SERVICE"
+                    }
+                ],
+                "managedPaths": [
+                    {
+                        "name": "",
+                        "type": "ExplicitInclusion"
+                    },
+                    {
+                        "name": "sites",
+                        "type": "WildcardInclusion"
+                    }
+                ],
+                "addresses": [
+                    {
+                        "publicUrl": "http://contoso-sp-01:2019",
+                        "zone": "Default",
+                        "incomingUrl": "http://contoso-sp-01:2019"
+                    }
+                ]
+            }
+        ],
+        "serviceApplicationProxies": [
+            {
+                "serviceApplicationId": "128c68be-36e2-4713-b98a-7e1e5dd66cb2",
+                "typeName": "User Profile Service Application Proxy",
+                "name": "UserProfile ServiceApplicationProxy",
+                "id": "da99a846-6a0d-4985-9418-1ed9e4d4f7fd"
+            },
+            {
+                "serviceApplicationId": "3badb77d-dcd4-4ac0-afe5-ab747c46c043",
+                "typeName": "Application Discovery and Load Balancer Service Application Proxy",
+                "name": "Application Discovery and Load Balancer Service Application Proxy_3badb77d-dcd4-4ac0-afe5-ab747c46c043",
+                "id": "8e8b5453-88da-4733-9ac8-04810dc924ba"
+            }
+        ],
+        "serviceApplications": [
+            {
+                "applicationPoolId": "ce744363-bdb2-4299-a6cd-f810f1374ff7",
+                "typeName": "Security Token Service Application",
+                "name": "Security Token Service Application",
+                "id": "8e33b38d-4f38-4ca3-806f-e1dbbfb17c33",
+                "properties": {}
+            },
+            {
+                "applicationPoolId": "7dac0bd6-2ac4-417d-be30-8d4621200927",
+                "typeName": "Application Discovery and Load Balancer Service Application",
+                "name": "Application Discovery and Load Balancer Service Application",
+                "id": "3badb77d-dcd4-4ac0-afe5-ab747c46c043",
+                "properties": {}
+            },
+            {
+                "applicationPoolId": "cae6b336-983a-4bd1-8583-310661d501e9",
+                "typeName": "User Profile Service Application",
+                "name": "UserProfile ServiceApplication",
+                "id": "128c68be-36e2-4713-b98a-7e1e5dd66cb2",
+                "properties": {}
+            }
+        ],
+        "contentDatabases": [
+            {
+                "id": "4f3bddf9-9769-4148-9f89-5c204c47c6dd",
+                "name": "WSS-Content",
+                "server": "spsql",
+                "currentSiteCount": 3,
+                "maximumSiteCount": 5000,
+                "webApplicationId": "b9538fcf-b429-4535-8635-29e74de0b280",
+                "size": 316669952
+            }
+        ],
+        "siteCollections": [
+            {
+                "contentDatabaseId": "4f3bddf9-9769-4148-9f89-5c204c47c6dd",
+                "url": "https://portal.contoso.com",
+                "name": "Contoso Portal",
+                "id": "30e12528-8b95-4dbe-aa07-7202b65b9652",
+                "size": 1375630
+            },
+            {
+                "contentDatabaseId": "4f3bddf9-9769-4148-9f89-5c204c47c6dd",
+                "url": "https://gor-srv-shp2019/sites/hr",
+                "name": "HR Department",
+                "id": "a2cae55c-e080-4a58-8f92-54b73aedd32e",
+                "size": 11452877
+            },
+            {
+                "contentDatabaseId": "4f3bddf9-9769-4148-9f89-5c204c47c6dd",
+                "url": "https://gor-srv-shp2019/sites/it",
+                "name": "IT Department",
+                "id": "67b8beea-41a1-4a61-9b43-58354f9133ea",
+                "size": 4246230
+            }
+        ],
+        "managedAccounts": [
+            {
+                "id": "35dc2fca-3644-4b46-b04d-5907a60dcf47",
+                "name": "CONTOSO\\sp_webapp",
+                "autoChangePassword": false
+            },
+            {
+                "id": "5e1afee7-18b1-47fd-9cc2-b41714339309",
+                "name": "CONTOSO\\sp_farm",
+                "autoChangePassword": false
+            }
+        ],
+        "serviceApplicationProxyGroups": [
+            {
+                "name": "",
+                "id": "d565429a-4054-4cb7-a025-02c18444ee50",
+                "proxies": [
+                    "da99a846-6a0d-4985-9418-1ed9e4d4f7fd"
+                ]
+            }
+        ],
+        "serviceApplicationPools": [
+            {
+                "id": "7dac0bd6-2ac4-417d-be30-8d4621200927",
+                "name": "SharePoint Web Services System",
+                "accountId": "5e1afee7-18b1-47fd-9cc2-b41714339309"
+            },
+            {
+                "id": "cae6b336-983a-4bd1-8583-310661d501e9",
+                "name": "UserProfileAppPool",
+                "accountId": "5e1afee7-18b1-47fd-9cc2-b41714339309"
+            },
+            {
+                "id": "ce744363-bdb2-4299-a6cd-f810f1374ff7",
+                "name": "SecurityTokenServiceApplicationPool",
+                "accountId": "5e1afee7-18b1-47fd-9cc2-b41714339309"
+            }
+        ]
+    },
+    "farmConfig": {
+        "configurationDatabaseName": "SharePoint2019_Config_DB",
+        "centralAdmin": {
+            "applicationPoolId": "9310520b-d3d6-45de-94b6-863e03b71fd9",
+            "url": "http://contoso-sp-01:2019/",
+            "farmAdmins": [
+                {
+                    "userName": "BUILTIN\\administrators",
+                    "name": "BUILTIN\\Administrators"
+                },
+                {
+                    "userName": "CONTOSO\\sp_farm",
+                    "name": "CONTOSO\\sp_farm"
+                },
+                {
+                    "userName": "CONTOSO\\sp_setup",
+                    "name": "sp_setup"
+                }
+            ]
+        },
+        "configurationDatabaseServer": "SharePoint-DB",
+        "configurationDatabaseVersion": "16.0.10352.20000",
+        "languagePacks": [
+            "Russian",
+            "English"
+        ]
+    }
+}
