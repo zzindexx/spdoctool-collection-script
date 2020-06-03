@@ -1,4 +1,4 @@
-Add-PSSnapin Microsoft.SHarePoint.PowerShell -ErrorAction SilentlyContinue
+ Add-PSSnapin Microsoft.SHarePoint.PowerShell -ErrorAction SilentlyContinue
 cls
 
 $outputFilePath = "C:\farminfo\farminfo.json"
@@ -252,7 +252,7 @@ Write-Host "Done"
 
 #Content databases
 Write-Host "Getting content databases..." -NoNewLine
-$contentDatabases =  @(Get-SPContentDatabase | select @{l='id'; e={$_.Id.ToString()}}, @{l='name'; e={$_.Name}}, @{l='server'; e={$_.Server}}, @{l='currentSiteCount'; e={$_.CurrentSiteCount}}, @{l='maximumSiteCount';e={$_.MaximumSiteCount}}, @{l='webApplicationId';e={$_.WebApplication.Id.ToString()}}, @{l='size';e={$_.DiskSizeRequired}} )
+$contentDatabases =  @(Get-SPWebApplication -IncludeCentralAdministration | Get-SPContentDatabase | select @{l='id'; e={$_.Id.ToString()}}, @{l='name'; e={$_.Name}}, @{l='server'; e={$_.Server}}, @{l='currentSiteCount'; e={$_.CurrentSiteCount}}, @{l='maximumSiteCount';e={$_.MaximumSiteCount}}, @{l='webApplicationId';e={$_.WebApplication.Id.ToString()}}, @{l='size';e={$_.DiskSizeRequired}} )
 Write-Host "Done"
 
 
@@ -348,7 +348,7 @@ Write-Host "Done"
 #Site collections
 Write-Host "Getting site collections.."
 $siteCollections = @()
-Get-SPWebApplication | % {
+Get-SPWebApplication -IncludeCentralAdministration | % {
     $webApp = $_
     Write-Host "    Web application - $($webApp.Url).."
     Get-SPSite -WebApplication $webApp -Limit All | % {
@@ -359,6 +359,10 @@ Get-SPWebApplication | % {
             url = $siteCollection.Url
             contentDatabaseId = $siteCollection.ContentDatabase.Id 
             size =  $siteCollection.Usage.Storage
+            owner = $siteCollection.Owner.DisplayName
+            ownerLoginName = $siteCollection.Owner.UserLogin
+            compatibilityLevel = $siteCollection.CompatibilityLevel
+            siteTemplate = $siteCollection.RootWeb.WebTemplate + "#" + $siteCollection.RootWeb.WebTemplateId
         }
     }
 }
