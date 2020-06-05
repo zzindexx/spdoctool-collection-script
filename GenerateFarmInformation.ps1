@@ -275,19 +275,19 @@ Write-Host "Done"
 
 #Managed accounts
 Write-Host "Getting managed accounts..." -NoNewLine
-$managedAccounts = Get-SPManagedAccount | select @{l='id';e={$_.Id.ToString()}}, @{l='name';e={$_.UserName}}, @{l='autoChangePassword';e={$_.AutomaticChange}}
+$managedAccounts = @(Get-SPManagedAccount | select @{l='id';e={$_.Id.ToString()}}, @{l='name';e={$_.UserName}}, @{l='autoChangePassword';e={$_.AutomaticChange}})
 Write-Host "Done"
 
 
 #Service application pools
 Write-Host "Getting service application pools..." -NoNewLine
-$serviceApplicationPools = Get-SPServiceApplicationPool | select @{l='id';e={$_.Id.ToString()}}, @{l='name';e={$_.DisplayName}}, @{l='accountId';e={ (Get-SPManagedAccount ($_.ProcessAccount.Name)).Id.ToString()}}
+$serviceApplicationPools = @(Get-SPServiceApplicationPool | select @{l='id';e={$_.Id.ToString()}}, @{l='name';e={$_.DisplayName}}, @{l='accountId';e={ (Get-SPManagedAccount ($_.ProcessAccount.Name)).Id.ToString()}})
 Write-Host "Done"
 
 
 #Service application proxy
 Write-Host "Getting service application proxies..." -NoNewLine
-$serviceApplicationProxies = Get-SPServiceApplicationProxy | % {
+$serviceApplicationProxies = @(Get-SPServiceApplicationProxy | % {
     $proxy = $_
     $serviceApplicationId = $null
 
@@ -305,7 +305,7 @@ $serviceApplicationProxies = Get-SPServiceApplicationProxy | % {
         typeName = $proxy.TypeName
         serviceApplicationId = $serviceApplicationId
     }
-}
+})
 Write-Host "Done"
 
 
@@ -324,7 +324,7 @@ Write-Host "Done"
 
 #Service applications
 Write-Host "Getting service applications..." -NoNewLine
-$serviceApplications = Get-SPServiceApplication | % {
+$serviceApplications = @(Get-SPServiceApplication | % {
     $sa = $_
 
     $saObject = @{
@@ -341,7 +341,7 @@ $serviceApplications = Get-SPServiceApplication | % {
     }
 
     $saObject
-}
+})
 Write-Host "Done"
 
 
@@ -382,8 +382,7 @@ $spConfig = @{
     serviceApplicationProxies = $serviceApplicationProxies
     serviceApplicationProxyGroups = $serviceApplicationProxyGroups
     serviceApplications = $serviceApplications
-    siteCollections = $siteCollections
-}
+    siteCollections = $siteCollection
 
 
 $farmConfigurationJson = @{
@@ -393,4 +392,3 @@ $farmConfigurationJson = @{
 }
 
 $farmConfigurationJson | ConvertTo-Json -Depth 100 | Out-File $outputFilePath
- 
