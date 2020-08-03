@@ -1,4 +1,4 @@
- Add-PSSnapin Microsoft.SHarePoint.PowerShell -ErrorAction SilentlyContinue
+Add-PSSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue
 cls
 
 $outputFilePath = "C:\farminfo\farminfo.json"
@@ -383,7 +383,7 @@ $spConfig = @{
     serviceApplicationProxyGroups = $serviceApplicationProxyGroups
     serviceApplications = $serviceApplications
     siteCollections = $siteCollection
-
+}
 
 $farmConfigurationJson = @{
     farmConfig = $farmConfig
